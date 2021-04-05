@@ -15,7 +15,7 @@ class CandidatesController < ApplicationController
       redirect_to candidates_path, notice: "新增成功"
     else
       #失敗
-      redner :new
+      render :new
     end
   end
 
@@ -29,7 +29,7 @@ class CandidatesController < ApplicationController
     if @candidate.update(candidates_params)
       redirect_to candidates_path, notice: "更新成功"
     else
-      redner :edit
+      render :edit
     end
   end
   
