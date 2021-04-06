@@ -18,6 +18,7 @@
     <% @candidates.each do |candidate| %>
     <tr>
       <td><%= link_to "投給這位", "#" %></td>
+      <td><%= link_to candidate.name, candidate_path(candidate.id) %></td>
       <td><%= candidate.name %></td>
       <td><%= candidate.age %></td>
       <td><%= candidate.party %></td>

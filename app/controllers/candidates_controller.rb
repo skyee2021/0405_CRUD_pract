@@ -9,9 +9,9 @@ class CandidatesController < ApplicationController
 
   def create
     @candidate = Candidate.new(candidates_params)
-
     if @candidate.save
       #成功
+      # flash[:notice] = "ha"
       redirect_to candidates_path, notice: "新增成功"
     else
       #失敗
@@ -25,7 +25,7 @@ class CandidatesController < ApplicationController
 
   def update
     @candidate = Candidate.find_by(id: params[:id])
-    
+    byebug
     if @candidate.update(candidates_params)
       redirect_to candidates_path, notice: "更新成功"
     else
