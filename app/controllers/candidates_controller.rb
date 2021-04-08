@@ -25,7 +25,7 @@ class CandidatesController < ApplicationController
 
   def update
     @candidate = Candidate.find_by(id: params[:id])
-    byebug
+    # byebug
     if @candidate.update(candidates_params)
       redirect_to candidates_path, notice: "更新成功"
     else
