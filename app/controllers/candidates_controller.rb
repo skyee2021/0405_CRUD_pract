@@ -1,7 +1,14 @@
 class CandidatesController < ApplicationController
   def index
-    @candidates = Candidate.all
+    # @candidates = Candidate.all
+    # @candidates = candidate.where(deleted_at:nil)
+    @candidates = Candidate.available
   end
+
+  # def index_deleted
+  #   @candidate = Candidate.deleted
+  # end
+
 
   def new
     @candidate = Candidate.new
@@ -32,10 +39,18 @@ class CandidatesController < ApplicationController
       render :edit
     end
   end
+
+  # def self.all
+  #   # where(deleted_at: nil)
+  #   #會造成無窮迴圈
+  # end
   
   def destroy
     @candidate = Candidate.find_by(id: params[:id])
+    # @candidate.destroy if @candidate  #真刪除
+    # @candidate.update(deleted_at: Time.now) #假刪除
     @candidate.destroy if @candidate
+    #在上層定義一個destroy假刪除
     redirect_to candidates_path, notice: "已刪除"
   end
   
